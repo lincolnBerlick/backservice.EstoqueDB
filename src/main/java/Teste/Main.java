@@ -35,25 +35,25 @@ public class Main {
     UsuariosController controller = new UsuariosController();
     
         UsuarioDAO dao = new UsuarioDAO();
-        
-        Usuarios user = new Usuarios();
-        
-        user.setUser_email("user1");
-        
-        System.out.println(dao.getUseremail("user1"));
-    
-    
+//        
 //        Usuarios user = new Usuarios();
-//        user.setUser_name("joao3df");
-//        user.setUser_Email("user1");
-//        user.setUser_Senha("stongfdgg");
 //        
-//        user.setUser_type(2);
+//        user.setUser_email("user1");
 //        
-//            System.err.println("usuario salvo "+ controller.salvarUsuarioController(user));
-//        
-//        
-//        
+//        System.out.println(dao.getUseremail("user1"));
+    
+        Usuarios user = new Usuarios();
+        user.setUser_name("joao3df");
+        user.setUser_email("user91");
+        user.setUser_Senha("stongfdgg");
+//        user.setUser_id();
+        
+        user.setUser_type(2);
+        
+            System.err.println("status "+ controller.salvarUsuarioController(user));
+        
+        
+        
     
     
     

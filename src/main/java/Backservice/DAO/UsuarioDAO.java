@@ -8,6 +8,7 @@ package Backservice.DAO;
 import Backservice.Infra.HibernateUtil;
 import Model.Usuarios;
 import java.util.List;
+
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -29,20 +30,13 @@ public class UsuarioDAO {
     public int SalvarUsuarioDAO(Usuarios user){
         
         Session session = null;
-        Integer iduser = 0;
-        
-        
-     
+        Integer idResult = 0; 
         
           try {
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-        
-      
-            
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();      
             session = sessionFactory.openSession();
             Transaction transaction = session.beginTransaction();
-            iduser = (Integer) session.save(user);
-       
+            idResult = (Integer) session.save(user);       
             transaction.commit();
                 
            
@@ -58,7 +52,7 @@ public class UsuarioDAO {
         }      
         
         
-     return iduser;
+     return idResult;
         
     }
     
@@ -142,31 +136,26 @@ public class UsuarioDAO {
 
     }
     
-      public List<Usuarios> getUseremail(String email) {
-          
-          
-         Session session = null;
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-        Usuarios user = null;
-        session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction(); 
-        
-        Criteria crit = session.createCriteria(Usuarios.class);
-        crit.add(Restrictions.like("user_email", "lincolf3@lingcolnfd5"))
-                .setProjection(Projections.property("user_email"));
-        
-        List<Usuarios> results = crit.list();
+    public Usuarios getUseremail(String email) {
+
+
+    Session session = null;
+    SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+    Usuarios user = new Usuarios();
+    session = sessionFactory.openSession();
+    Transaction transaction = session.beginTransaction(); 
+
+    Criteria crit = session.createCriteria(Usuarios.class);
+    crit.add(Restrictions.like("user_email", email))
+    .setProjection(Projections.property("user_email"));      
+
+//         verifica se usuario retorna null
+    user.setUser_email((crit.uniqueResult() != null) ? crit.uniqueResult().toString() : null); 
+    
+    HibernateUtil.Closeconnection(session);
+
+       return user;
       
-      
-        
-        
-        
-        
-        
-        
-     
-      
-        return results;
 
     }
 
