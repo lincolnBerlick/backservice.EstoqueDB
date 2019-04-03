@@ -14,15 +14,14 @@ import java.util.List;
  * @author lincoln
  */
 public class UsuariosController {
+    
     private final UsuarioDAO userdao = new UsuarioDAO();
     
     
     public String salvarUsuarioController(Usuarios user){
         
-    final String[] status = { "Não foi possivel salvar usuario", "Usuario salvo com Sucesso", "Email já cadastrado", "Usuario Atualizado com Sucesso"}; 
-  
-        
-        
+    final String[] status = { "Não foi possivel salvar usuario", "Usuario salvo com Sucesso", "Email já cadastrado", "Usuario Atualizado com Sucesso"};    
+    
     Usuarios usuarios = (user.getUser_id() != null ) ?  this.getUser(user.getUser_id()) : null;
 
         

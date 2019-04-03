@@ -29,31 +29,35 @@ public class Main {
     
     public static void main(String[] args) {
 
-
-
-
     UsuariosController controller = new UsuariosController();
-    
-        UsuarioDAO dao = new UsuarioDAO();
+
+        
+        List<Usuarios> list = controller.getUsers(); 
+        System.err.println(list);
+                
+         
+//    UsuariosController controller = new UsuariosController();
+//    
+//        UsuarioDAO dao = new UsuarioDAO();
 //        
 //        Usuarios user = new Usuarios();
 //        
 //        user.setUser_email("user1");
 //        
 //        System.out.println(dao.getUseremail("user1"));
-    
-        Usuarios user = new Usuarios();
-        user.setUser_name("joao3df");
-        user.setUser_email("user91");
-        user.setUser_Senha("stongfdgg");
-//        user.setUser_id();
-        
-        user.setUser_type(2);
-        
-            System.err.println("status "+ controller.salvarUsuarioController(user));
-        
-        
-        
+//    
+//        Usuarios user = new Usuarios();
+//        user.setUser_name("joao3df");
+//        user.setUser_email("user91");
+//        user.setUser_Senha("stongfdgg");
+////        user.setUser_id();
+//        
+//        user.setUser_type(2);
+//        
+//            System.err.println("status "+ controller.salvarUsuarioController(user));
+//        
+//        
+//        
     
     
     
